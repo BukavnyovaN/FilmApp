@@ -4,4 +4,6 @@ export const PATHS = {
     SIGNUP: '/signup',
     FAVORITES: '/favorites',
     HISTORY: '/history',
+    DETAILS: '/details/:id',
+    ANY: '*'
 };
