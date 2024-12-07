@@ -1,27 +1,15 @@
-/*
-import React from 'react';
-
-export function SignIn() {
-    return (
-        <div>
-            <h1>This is our sign in page</h1>
-        </div>
-    );
-}
-*/
-
 import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { Form, Input, Button, Alert } from 'antd';
-import { loginUser } from '../../redux/authSlice';
+import { loginUser } from '../../redux/actions/authActions';
 import { useNavigate } from 'react-router-dom';
 
 const schema = Yup.object().shape({
-    username: Yup.string().required('Username is required'),
-    password: Yup.string().required('Password is required'),
+    username: Yup.string().required('Требуется имя пользователя'),
+    password: Yup.string().required('Требуется пароль'),
 });
 
 export const SignIn = () => {
@@ -51,7 +39,7 @@ export const SignIn = () => {
         <div style={{ maxWidth: 300, margin: 'auto' }}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Item
-                    label="Username"
+                    label="Имя пользователя"
                     validateStatus={errors.username ? 'error' : ''}
                     help={errors.username?.message}
                 >
@@ -60,13 +48,13 @@ export const SignIn = () => {
                         control={control}
                         defaultValue=""
                         render={({ field }) => (
-                            <Input {...field} placeholder="Enter username" />
+                            <Input {...field} placeholder="Введите имя пользователя" />
                         )}
                     />
                 </Form.Item>
 
                 <Form.Item
-                    label="Password"
+                    label="Пароль"
                     validateStatus={errors.password ? 'error' : ''}
                     help={errors.password?.message}
                 >
@@ -75,7 +63,7 @@ export const SignIn = () => {
                         control={control}
                         defaultValue=""
                         render={({ field }) => (
-                            <Input.Password {...field} placeholder="Enter password" />
+                            <Input.Password {...field} placeholder="Введите пароль" />
                         )}
                     />
                 </Form.Item>
@@ -83,11 +71,9 @@ export const SignIn = () => {
                 {error && <Alert type="error" message={error} style={{ marginBottom: 16 }} />}
 
                 <Button type="primary" htmlType="submit" loading={status === 'loading'}>
-                    Login
+                    Войти
                 </Button>
             </form>
         </div>
     );
 };
-
-//export default SignIn;

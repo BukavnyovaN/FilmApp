@@ -1,34 +1,22 @@
-/*
-import React from 'react';
-
-export function SignUp() {
-    return (
-        <div>
-            <h1>This is our sign up page</h1>
-        </div>
-    );
-}
-*/
-
 import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { Form, Input, Button, Alert } from 'antd';
-import { registerUser } from '../../redux/authSlice';
+import { registerUser } from '../../redux/actions/authActions';
 import { useNavigate } from 'react-router-dom';
 
 const schema = Yup.object().shape({
     username: Yup.string()
-        .required('Username is required')
-        .min(3, 'Username must be at least 3 characters'),
+        .required('Требуется имя пользователя')
+        .min(3, 'Имя пользователя должно содержать не менее 3 символов'),
     password: Yup.string()
-        .required('Password is required')
-        .min(5, 'Password must be at least 5 characters'),
+        .required('Требуется пароль')
+        .min(5, 'Пароль должен содержать не менее 5 символов'),
     confirmPassword: Yup.string()
-        .required('Confirm password is required')
-        .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+        .required('Требуется подтвердить пароль')
+        .oneOf([Yup.ref('password'), null], 'Пароли должны совпадать'),
 });
 
 export const SignUp = () => {
@@ -48,7 +36,6 @@ export const SignUp = () => {
         dispatch(registerUser(data));
     };
 
-    // Если успешно, то переход на главную страницу
     useEffect(() => {
         if (status === 'succeeded' && isAuthenticated) {
             navigate('/');
@@ -59,7 +46,7 @@ export const SignUp = () => {
         <div style={{ maxWidth: 300, margin: 'auto' }}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Item
-                    label="Username"
+                    label="Имя пользователя"
                     validateStatus={errors.username ? 'error' : ''}
                     help={errors.username?.message}
                 >
@@ -68,13 +55,13 @@ export const SignUp = () => {
                         control={control}
                         defaultValue=""
                         render={({ field }) => (
-                            <Input {...field} placeholder="Enter username" />
+                            <Input {...field} placeholder="Введите имя пользователя" />
                         )}
                     />
                 </Form.Item>
 
                 <Form.Item
-                    label="Password"
+                    label="Пароль"
                     validateStatus={errors.password ? 'error' : ''}
                     help={errors.password?.message}
                 >
@@ -83,13 +70,13 @@ export const SignUp = () => {
                         control={control}
                         defaultValue=""
                         render={({ field }) => (
-                            <Input.Password {...field} placeholder="Enter password" />
+                            <Input.Password {...field} placeholder="Введите пароль" />
                         )}
                     />
                 </Form.Item>
 
                 <Form.Item
-                    label="Confirm Password"
+                    label="Подтвердите пароль"
                     validateStatus={errors.confirmPassword ? 'error' : ''}
                     help={errors.confirmPassword?.message}
                 >
@@ -98,7 +85,7 @@ export const SignUp = () => {
                         control={control}
                         defaultValue=""
                         render={({ field }) => (
-                            <Input.Password {...field} placeholder="Confirm password" />
+                            <Input.Password {...field} placeholder="Повторный ввод пароля" />
                         )}
                     />
                 </Form.Item>
@@ -106,11 +93,9 @@ export const SignUp = () => {
                 {error && <Alert type="error" message={error} style={{ marginBottom: 16 }} />}
 
                 <Button type="primary" htmlType="submit" loading={status === 'loading'}>
-                    Register
+                    Зарегистрироваться
                 </Button>
             </form>
         </div>
     );
 };
-
-//export default SignUp;
