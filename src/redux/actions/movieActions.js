@@ -5,7 +5,6 @@ const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 export const fetchMovies = (page = 1) => {
     return async (dispatch) => {
         dispatch({ type: 'START_LOADING' });
-        console.log(API_KEY)
         try {
             const response = await axios.get('https://kinopoiskapiunofficial.tech/api/v2.2/films',
                 {

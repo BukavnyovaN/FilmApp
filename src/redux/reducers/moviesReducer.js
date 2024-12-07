@@ -6,7 +6,7 @@ const inititalState = {
     currentPage: 1,
 };
 
-export const moviesReduser = (state = inititalState, action) => {
+export const moviesReducer = (state = inititalState, action) => {
     switch (action.type) {
         case 'START_LOADING':
             return {
