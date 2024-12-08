@@ -2,8 +2,7 @@ const inititalState = {
     movies: [],
     loading: false,
     error: null,
-    totalPages: 0,
-    currentPage: 1,
+    totalItems: 0,
 };
 
 export const moviesReducer = (state = inititalState, action) => {
@@ -19,8 +18,7 @@ export const moviesReducer = (state = inititalState, action) => {
                 ...state,
                 loading: false,
                 movies: action.payload.items,
-                currentPage: action.payload.currentPage,
-                totalPages: action.payload.totalPages,
+                totalItems: action.payload.totalItems,
             };
         case 'REQUEST_ERROR':
             return {
@@ -29,5 +27,5 @@ export const moviesReducer = (state = inititalState, action) => {
                 error: action.payload,
             };
         default: return state;
-    };
+    }
 };

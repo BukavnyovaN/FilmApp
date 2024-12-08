@@ -1,0 +1,17 @@
+.movie-card_info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.movie-card_stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.movie-card_genres {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

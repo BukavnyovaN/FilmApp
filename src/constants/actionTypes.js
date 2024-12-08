@@ -1,3 +1,5 @@
+
+// auth action types
 export const REGISTER_REQUEST = 'AUTH/REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'AUTH/REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'AUTH/REGISTER_FAILURE';
@@ -7,3 +9,12 @@ export const LOGIN_SUCCESS = 'AUTH/LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'AUTH/LOGIN_FAILURE';
 
 export const LOGOUT = 'AUTH/LOGOUT';
+
+// movies action types
+
+
+
+// filter action types
+export const SET_FILTERS = 'SET_FILTERS';
+export const REMOVE_FILTERS = 'REMOVE_FILTERS';
+export const OPEN_FILTERS = 'OPEN_FILTERS';

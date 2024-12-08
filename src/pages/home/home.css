@@ -1,0 +1,21 @@
+.main-page_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.main-page_movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between
+}
+
+.main-page_dropdown {
+    width: fit-content;
+}
+
+.main-page_filter-controls {
+    display: flex;
+    gap: 30px;
+}
