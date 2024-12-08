@@ -1,0 +1,4 @@
+.filter-form_buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
