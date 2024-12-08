@@ -22,13 +22,13 @@ export function MainLayout() {
                     justifyContent: 'space-evenly',
                     color: 'white',
                 }}>
-                    <Link to={PATHS.ROOT} style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                    <Link to={PATHS.ROOT} style={{display: 'flex', alignItems: 'center', gap: '10px', lineHeight: "normal"}}>
                         <Image
                             width={30}
                             src={logo}
                             preview={false}
                         />
-                        <div>Главная</div>
+                        <p>Главная</p>
                     </Link>
                     {isAuthenticated ? (
                         <>

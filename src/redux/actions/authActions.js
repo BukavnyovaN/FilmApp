@@ -6,7 +6,7 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
     LOGOUT
-} from './authActionTypes';
+} from '../../constants/actionTypes';
 
 import {
     getUsersFromLocalStorage,

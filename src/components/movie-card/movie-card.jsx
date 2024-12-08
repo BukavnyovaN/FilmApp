@@ -21,8 +21,14 @@ export const MovieCard = ({id, nameRu, nameEn, year, posterUrl, rating, genres})
         <div className='movie-card_info'>
             <div className='movie-card_stats'>
                 <div>
-                    <StarFilled style={{color: '#ffa500', fontSize: '20px'}}/>
-                    {rating}
+                    {
+                        rating &&
+                        <>
+                            <StarFilled style={{color: '#ffa500', fontSize: '20px'}}/>
+                            {rating}
+                        </>
+                    }
+
                 </div>
                 <div>
                     { isAuthenticated &&

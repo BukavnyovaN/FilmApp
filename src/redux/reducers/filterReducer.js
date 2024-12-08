@@ -1,3 +1,5 @@
+import {OPEN_FILTERS, REMOVE_FILTERS, SET_FILTERS} from "../../constants/actionTypes";
+
 const initialState = {
     filters: {
         type: 'ALL',
@@ -12,17 +14,17 @@ const initialState = {
 
 export const filterReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_FILTERS':
+        case SET_FILTERS:
             return {
                 ...state,
                 ...action.payload,
             };
-        case 'OPEN_FILTERS':
+        case OPEN_FILTERS:
             return {
                 ...state,
                 ...action.payload,
             };
-        case 'REMOVE_FILTERS':
+        case REMOVE_FILTERS:
             return {
                 ...state,
                 ...action.payload,
