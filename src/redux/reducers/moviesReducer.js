@@ -27,5 +27,5 @@ export const moviesReducer = (state = inititalState, action) => {
                 error: action.payload,
             };
         default: return state;
-    };
+    }
 };

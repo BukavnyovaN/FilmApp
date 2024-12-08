@@ -38,6 +38,6 @@ export const fetchMovies = (page, order, filters) => {
                 type: 'REQUEST_ERROR',
                 payload: error.message,
             });
-        };
+        }
     };
 };
