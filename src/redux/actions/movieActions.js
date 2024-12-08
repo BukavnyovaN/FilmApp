@@ -1,10 +1,27 @@
 import axios from "axios";
+import { FETCH_MOVIES_SUCCESS, REQUEST_ERROR, START_LOADING } from "../../constants/actionTypes";
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
+const startLoading = () => ({ type: START_LOADING });
+
+const fetchMoviesSuccess = (data, page) => ({
+    type: FETCH_MOVIES_SUCCESS,
+    payload: {
+        items: data.items,
+        currentPage: page,
+        totalItems: data.total
+    }
+});
+
+const requestError = (error) => ({
+    type: REQUEST_ERROR,
+    payload: error.message
+})
+
 export const fetchMovies = (page, order, filters) => {
     return async (dispatch) => {
-        dispatch({ type: 'START_LOADING' });
+        dispatch(startLoading());
         try {
             const { type, country, genre, yearFrom, yearTo } = filters;
 
@@ -24,20 +41,10 @@ export const fetchMovies = (page, order, filters) => {
                     },
                 });
 
-            dispatch({
-                type: 'FETCH_MOVIES_SUCCESS',
-                payload: {
-                    items: response.data.items,
-                    totalPages: response.data.totalPages,
-                    currentPage: page,
-                    totalItems: response.data.total,
-                },
-            });
+            dispatch(fetchMoviesSuccess(response.data, page));
         } catch (error) {
-            dispatch({
-                type: 'REQUEST_ERROR',
-                payload: error.message,
-            });
+            dispatch(requestError(error));
         }
     };
 };
+
