@@ -1,0 +1,12 @@
+.details-page_header {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.details-page_info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: start;
+}
