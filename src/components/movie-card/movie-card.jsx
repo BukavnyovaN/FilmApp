@@ -14,10 +14,6 @@ export const MovieCard = ({id, nameRu, nameEn, year, posterUrl, rating, genres})
         navigate(PATHS.SINGLE_DETAIL + id);
     };
 
-    const handleButtonClick = (event) => {
-        event.stopPropagation();
-    }
-
     return (
     <Card
         hoverable
@@ -26,7 +22,7 @@ export const MovieCard = ({id, nameRu, nameEn, year, posterUrl, rating, genres})
         cover={<img alt={nameRu || nameEn} src={posterUrl} style={{maxHeight: '350px'}}/>}
         key={id}
         title={nameRu || nameEn}
-        onClick={(event) => {handleCardClick(id)}}
+        onClick={() => {handleCardClick(id)}}
         extra={<div>{year}</div>}
     >
         <div className='movie-card_info'>
@@ -47,7 +43,6 @@ export const MovieCard = ({id, nameRu, nameEn, year, posterUrl, rating, genres})
                         type="default"
                         icon={<HeartOutlined/>}
                         title={''}
-                        onClickHandler={(event) => {handleButtonClick(event)}}
                         />
                     }
                 </div>
