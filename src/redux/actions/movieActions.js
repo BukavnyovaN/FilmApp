@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
+export const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
 export const fetchMovies = (page, order, filters) => {
     return async (dispatch) => {
