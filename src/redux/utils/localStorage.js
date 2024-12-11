@@ -21,3 +21,31 @@ export function removeCurrentUser() {
 export function getCurrentUser() {
     return localStorage.getItem(CURRENT_USER_KEY);
 }
+
+export const getFavorites = () => {
+    const users = getUsersFromLocalStorage()
+    const currentUsername = getCurrentUser()
+    return users[currentUsername]?.favorites || [];
+}
+
+export const toggleFavorites = (movieData) => {
+    const users = getUsersFromLocalStorage()
+    const currentUsername = getCurrentUser()
+    const favorites = users[currentUsername]?.favorites || [];
+
+    if (users === undefined || currentUsername === undefined)
+        return
+
+    const movieExists = favorites.some(existingMovie => existingMovie.id === movieData.id);
+
+    if (movieExists) {
+        users[currentUsername].favorites = favorites.filter(existingMovie => existingMovie.id !== movieData.id);
+    } else {
+        favorites.push(movieData);
+        users[currentUsername].favorites = favorites;
+    }
+
+    setUsersToLocalStorage(users);
+};
+
+

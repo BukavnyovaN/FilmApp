@@ -1,0 +1,12 @@
+.favorite-page_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.favorite-page_movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between
+}
