@@ -1,0 +1,11 @@
+.staff-card_info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.staff-card_profession {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
