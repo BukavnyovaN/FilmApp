@@ -1,7 +1,7 @@
 import axios from "axios";
 import { FETCH_MOVIES_SUCCESS, REQUEST_ERROR, START_LOADING } from "../../constants/actionTypes";
 
-const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
+export const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
 const startLoading = () => ({ type: START_LOADING });
 

@@ -9,6 +9,7 @@ import { SORTING_VALUES } from "../../constants/sotring_values";
 import { FilterForm } from "../../components/filter-form/filter-form";
 import { CustomButton } from "../../components/custom-button/custom-button";
 import { openFilterDrawer } from "../../redux/actions/filterActions";
+import React, { useEffect, useState } from 'react';
 import './home.css';
 import { getFavorites, toggleFavorites } from '../../redux/utils/localStorage';
 

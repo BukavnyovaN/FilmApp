@@ -13,7 +13,7 @@ export function MainLayout() {
     const { isAuthenticated, username } = useSelector(state => state.auth);
 
     return (
-        <Layout>
+        <Layout style={{minHeight: '100vh'}}>
             <Layout>
                 <Header style={{
                     width: '100%',

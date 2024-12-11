@@ -5,5 +5,6 @@ export const PATHS = {
     FAVORITES: '/favorites',
     HISTORY: '/history',
     DETAILS: '/details/:id',
+    SINGLE_DETAIL: '/details/',
     ANY: '*'
 };

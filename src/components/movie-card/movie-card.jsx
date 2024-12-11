@@ -3,16 +3,17 @@ import './movie-card.css';
 import { HeartFilled, HeartOutlined, StarFilled } from "@ant-design/icons";
 import { CustomButton } from "../custom-button/custom-button";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { PATHS } from "../../constants/paths";
 
 export const MovieCard = ({ id, nameRu, nameEn, year, posterUrl, rating, genres,
     isFavorite, updateFavorites }) => {
     const { isAuthenticated } = useSelector(state => state.auth);
+    const navigate = useNavigate();
 
-
-
-
-
-
+    const handleCardClick = (id) => {
+        navigate(PATHS.SINGLE_DETAIL + id);
+    };
 
     const handleButtonClick = (event, movieData) => {
         event.stopPropagation();
@@ -27,7 +28,7 @@ export const MovieCard = ({ id, nameRu, nameEn, year, posterUrl, rating, genres,
             cover={<img alt={nameRu || nameEn} src={posterUrl} style={{ maxHeight: '350px' }} />}
             key={id}
             title={nameRu || nameEn}
-
+            onClick={() => { handleCardClick(id) }}
             extra={<div>{year}</div>}
         >
             <div className='movie-card_info'>
