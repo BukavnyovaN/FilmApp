@@ -1,15 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {Dropdown, Pagination, Space} from "antd";
-import {ArrowDownOutlined, ArrowUpOutlined, FilterOutlined} from "@ant-design/icons";
-import {fetchMovies} from "../../redux/actions/movieActions";
-import {MovieCard} from "../../components/movie-card/movie-card";
-import {Loader} from "../../components/loader/loader";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { Dropdown, Pagination, Space } from "antd";
+import { ArrowDownOutlined, ArrowUpOutlined, FilterOutlined } from "@ant-design/icons";
+import { fetchMovies } from "../../redux/actions/movieActions";
+import { MovieCard } from "../../components/movie-card/movie-card";
+import { Loader } from "../../components/loader/loader";
 import { SORTING_VALUES } from "../../constants/sorting_values";
-import {FilterForm} from "../../components/filter-form/filter-form";
-import {CustomButton} from "../../components/custom-button/custom-button";
-import {openFilterDrawer} from "../../redux/actions/filterActions";
+import { FilterForm } from "../../components/filter-form/filter-form";
+import { CustomButton } from "../../components/custom-button/custom-button";
+import { openFilterDrawer } from "../../redux/actions/filterActions";
 import './home.css';
+import { getFavorites, toggleFavorites } from '../../redux/utils/localStorage';
 
 export function Home() {
     const [currentPageNum, setCurrentPageNum] = useState(1);
@@ -21,6 +22,13 @@ export function Home() {
     useEffect(() => {
         dispatch(fetchMovies(currentPageNum, dropdownValue, filters));
     }, [dispatch, currentPageNum, dropdownValue, filters]);
+
+    const [favorites, setFavorites] = useState(getFavorites())
+
+    const updateFavorites = (movie) => {
+        toggleFavorites(movie)
+        setFavorites(getFavorites())
+    }
 
     const onPageChange = (page) => {
         setCurrentPageNum(page);
@@ -41,7 +49,7 @@ export function Home() {
     }));
 
     if (loading) {
-        return <Loader/>
+        return <Loader />
     }
 
     if (error) {
@@ -54,7 +62,7 @@ export function Home() {
             <div className='main-page_filter-controls'>
                 <CustomButton
                     title={''}
-                    icon={<FilterOutlined/>}
+                    icon={<FilterOutlined />}
                     type={'primary'}
                     onClickHandler={handleOpenDrawer}
                 />
@@ -69,6 +77,8 @@ export function Home() {
             <div className='main-page_movies-container'>
                 {movies.map((movie) => (
                     <MovieCard
+                        updateFavorites={updateFavorites}
+                        isFavorite={Boolean(favorites.find((favoriteMovie) => favoriteMovie.id === movie.kinopoiskId))}
                         key={movie.kinopoiskId}
                         id={movie.kinopoiskId}
                         nameRu={movie.nameRu}

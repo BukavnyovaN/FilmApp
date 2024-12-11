@@ -11,8 +11,9 @@ export const LOGIN_FAILURE = 'AUTH/LOGIN_FAILURE';
 export const LOGOUT = 'AUTH/LOGOUT';
 
 // movies action types
-
-
+export const START_LOADING = 'START_LOADING';
+export const FETCH_MOVIES_SUCCESS = 'FETCH_MOVIES_SUCCESS';
+export const REQUEST_ERROR = 'REQUEST_ERROR';
 
 // filter action types
 export const SET_FILTERS = 'SET_FILTERS';
