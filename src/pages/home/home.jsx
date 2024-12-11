@@ -5,11 +5,10 @@ import { ArrowDownOutlined, ArrowUpOutlined, FilterOutlined } from "@ant-design/
 import { fetchMovies } from "../../redux/actions/movieActions";
 import { MovieCard } from "../../components/movie-card/movie-card";
 import { Loader } from "../../components/loader/loader";
-import { SORTING_VALUES } from "../../constants/sotring_values";
+import { SORTING_VALUES } from "../../constants/sorting_values";
 import { FilterForm } from "../../components/filter-form/filter-form";
 import { CustomButton } from "../../components/custom-button/custom-button";
 import { openFilterDrawer } from "../../redux/actions/filterActions";
-import React, { useEffect, useState } from 'react';
 import './home.css';
 import { getFavorites, toggleFavorites } from '../../redux/utils/localStorage';
 
