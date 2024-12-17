@@ -1,7 +1,7 @@
 export const getCorrectNavigate = (currentPageNum, dropdownValue, filters, keyword) => {
     const { type, country, genre, yearFrom, yearTo } = filters;
     let navString = `/search?`;
-    if (keyword) navString += `keyword=${encodeURIComponent(keyword)}`;
+    if (keyword) navString += `keyword=${keyword}`;
     if (type && type !== 'ALL') navString += `&type=${type}`;
     if (country) navString += `&country=${country}`;
     if (genre) navString += `&genre=${genre}`;
