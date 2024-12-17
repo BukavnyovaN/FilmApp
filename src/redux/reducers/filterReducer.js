@@ -1,4 +1,4 @@
-import {OPEN_FILTERS, REMOVE_FILTERS, SET_FILTERS} from "../../constants/actionTypes";
+import { OPEN_FILTERS, REMOVE_FILTERS, SET_FILTERS } from "../../constants/actionTypes";
 
 const initialState = {
     filters: {
@@ -6,7 +6,7 @@ const initialState = {
         country: null,
         genre: null,
         yearFrom: null,
-        yearTo: null
+        yearTo: null,
     },
     isFilterApplied: false,
     isFilterDrawerOpen: false,

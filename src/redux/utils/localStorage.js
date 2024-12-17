@@ -47,5 +47,3 @@ export const toggleFavorites = (movieData) => {
 
     setUsersToLocalStorage(users);
 };
-
-

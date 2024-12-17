@@ -43,7 +43,7 @@ export const SignUp = () => {
     }, [status, isAuthenticated, navigate]);
 
     return (
-        <div style={{ maxWidth: 300, margin: 'auto' }}>
+        <div style={{ maxWidth: 370, margin: 'auto' }}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Item
                     label="Имя пользователя"

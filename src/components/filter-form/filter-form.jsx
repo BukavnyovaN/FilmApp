@@ -1,11 +1,12 @@
-import {Select, DatePicker, Button, Form, Drawer} from 'antd';
-import {useDispatch, useSelector} from "react-redux";
-import {UndoOutlined} from "@ant-design/icons";
+import React from 'react';
+import { Select, DatePicker, Button, Form, Drawer } from 'antd';
+import { useDispatch, useSelector } from "react-redux";
+import { UndoOutlined } from "@ant-design/icons";
 import moment from "moment";
-import {COUNTRIES} from "../../constants/countries";
-import {GENRES} from "../../constants/genres";
-import {openFilterDrawer, removeFilters, setFilters} from "../../redux/actions/filterActions";
-import {CustomButton} from "../custom-button/custom-button";
+import { COUNTRIES } from "../../constants/countries";
+import { GENRES } from "../../constants/genres";
+import { openFilterDrawer, removeFilters, setFilters } from "../../redux/actions/filterActions";
+import { CustomButton } from "../custom-button/custom-button";
 import './filter-form.css';
 
 const { Option } = Select;
@@ -41,16 +42,16 @@ export const FilterForm = () => {
     return (
         <Drawer title="Фильтр" placement={'left'} onClose={handleCloseDrawer} open={isFilterDrawerOpen}>
             <Form form={form}
-                  layout={'vertical'}
-                  onFinish={handleFilterApply}
-                  initialValues={{
-                      type: filters.type,
-                      country: filters.country,
-                      genre: filters.genre,
-                      yearRange: filters.yearFrom && filters.yearTo ?
-                          [moment().year(filters.yearFrom), moment().year(filters.yearTo)]
-                          : null,
-                  }}
+                layout={'vertical'}
+                onFinish={handleFilterApply}
+                initialValues={{
+                    type: filters.type,
+                    country: filters.country,
+                    genre: filters.genre,
+                    yearRange: filters.yearFrom && filters.yearTo ?
+                        [moment().year(filters.yearFrom), moment().year(filters.yearTo)]
+                        : null,
+                }}
             >
                 <Form.Item name="type" label="Тип фильма">
                     <Select style={{ width: 120 }}>

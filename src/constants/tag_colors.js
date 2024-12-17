@@ -1,5 +1,5 @@
 export const TAG_COLORS = [
-   "magenta",
+    "magenta",
     "red",
     "volcano",
     "orange",

@@ -19,3 +19,8 @@ export const REQUEST_ERROR = 'REQUEST_ERROR';
 export const SET_FILTERS = 'SET_FILTERS';
 export const REMOVE_FILTERS = 'REMOVE_FILTERS';
 export const OPEN_FILTERS = 'OPEN_FILTERS';
+
+// search action types
+export const SET_KEYWORD = 'SET_KEYWORD';
+export const RESET_KEYWORD = 'RESET_KEYWORD';
+export const REMOVE_KEYWORD = 'REMOVE_KEYWORD';

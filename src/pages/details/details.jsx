@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import {ENDPOINTS} from "../../constants/endpoints";
-import {API_KEY} from "../../redux/actions/movieActions";
-import {Loader} from "../../components/loader/loader";
-import {Descriptions, Flex, Image, Rate, Tag, Tooltip} from "antd";
-import {CustomButton} from "../../components/custom-button/custom-button";
-import {HeartOutlined} from "@ant-design/icons";
-import {useSelector} from "react-redux";
+import { ENDPOINTS } from "../../constants/endpoints";
+import { API_KEY } from "../../redux/actions/movieActions";
+import { Loader } from "../../components/loader/loader";
+import { Descriptions, Flex, Image, Rate, Tag, Tooltip } from "antd";
+import { CustomButton } from "../../components/custom-button/custom-button";
+import { HeartOutlined } from "@ant-design/icons";
+import { useSelector } from "react-redux";
 import './details.css';
-import {getRandomColor} from "../../utils/helpers/gerRandomColor";
-import {StaffCard} from "../../components/staff-card/staff-card";
+import { getRandomColor } from "../../utils/helpers/getRandomColor";
+import { StaffCard } from "../../components/staff-card/staff-card";
 
 export function Details() {
     const { id } = useParams();
@@ -37,7 +37,6 @@ export function Details() {
                 ]);
 
                 const limitedStaff = movieStaffResponse.data.filter((staff) => staff.professionText === 'Актеры').slice(0, 5);
-                console.log(limitedStaff);
                 setMovieDetails(movieDetailsResponse.data);
                 setMovieStaff(limitedStaff);
             } catch (err) {
@@ -51,7 +50,7 @@ export function Details() {
     }, [id]);
 
     if (loading) {
-        return <Loader/>;
+        return <Loader />;
     }
     if (error) return <p>Ошибка: {error}</p>;
 
@@ -62,7 +61,7 @@ export function Details() {
                 {isAuthenticated &&
                     <CustomButton
                         type="default"
-                        icon={<HeartOutlined/>}
+                        icon={<HeartOutlined />}
                         title={''}
                         onClickHandler={() => {
                             console.log(id)
@@ -81,31 +80,31 @@ export function Details() {
                     <Descriptions bordered={true} colon={false} layout={'horizontal'} column={1}>
                         {
                             movieDetails.ratingKinopoisk &&
-                            <Descriptions.Item label="Рейтинг Кинопоиск" labelStyle={{width: '20%'}}>
+                            <Descriptions.Item label="Рейтинг Кинопоиск" labelStyle={{ width: '20%' }}>
                                 <Tooltip title={movieDetails.ratingKinopoisk}>
                                     <Rate disabled
-                                          defaultValue={movieDetails.ratingKinopoisk}
-                                          allowHalf={true}
-                                          count={10}
+                                        defaultValue={movieDetails.ratingKinopoisk}
+                                        allowHalf={true}
+                                        count={10}
                                     />
                                 </Tooltip>
                             </Descriptions.Item>
                         }
                         {
                             movieDetails.ratingImdb &&
-                            <Descriptions.Item label="Рейтинг IMDb" labelStyle={{width: '20%'}}>
+                            <Descriptions.Item label="Рейтинг IMDb" labelStyle={{ width: '20%' }}>
                                 <Tooltip title={movieDetails.ratingImdb}>
                                     <Rate disabled
-                                          defaultValue={movieDetails.ratingImdb}
-                                          allowHalf={true}
-                                          count={10}
+                                        defaultValue={movieDetails.ratingImdb}
+                                        allowHalf={true}
+                                        count={10}
                                     />
                                 </Tooltip>
                             </Descriptions.Item>
                         }
                         {
                             movieDetails.countries.length &&
-                            <Descriptions.Item label="Страны" labelStyle={{width: '20%'}}>
+                            <Descriptions.Item label="Страны" labelStyle={{ width: '20%' }}>
                                 {movieDetails.countries.map(country => (
                                     <div key={country.country}>{country.country}</div>
                                 ))}
@@ -113,7 +112,7 @@ export function Details() {
                         }
                         {
                             movieDetails.genres.length &&
-                            <Descriptions.Item label="Жанры" labelStyle={{width: '20%'}}>
+                            <Descriptions.Item label="Жанры" labelStyle={{ width: '20%' }}>
                                 <Flex gap="4px 0" wrap>
                                     {movieDetails.genres.map(genre => (
                                         <Tag color={getRandomColor()} key={genre.genre}>{genre.genre}</Tag>
@@ -123,7 +122,7 @@ export function Details() {
                         }
                         {
                             movieDetails.description &&
-                            <Descriptions.Item label="Описание" labelStyle={{width: '20%'}}>
+                            <Descriptions.Item label="Описание" labelStyle={{ width: '20%' }}>
                                 {movieDetails.description}
                             </Descriptions.Item>
                         }
@@ -136,10 +135,10 @@ export function Details() {
                             <div className='details-page_staff'>
                                 {movieStaff.map((actor) =>
                                     <StaffCard id={actor.id}
-                                               nameEn={actor.nameEn}
-                                               nameRu={actor.nameRu}
-                                               posterUrl={actor.posterUrl}
-                                               professionText={actor.professionText}
+                                        nameEn={actor.nameEn}
+                                        nameRu={actor.nameRu}
+                                        posterUrl={actor.posterUrl}
+                                        professionText={actor.professionText}
                                     />
                                 )}
                             </div>
