@@ -10,7 +10,7 @@ import { SearchForm } from '../../components/search-form/search-form';
 import { CustomButton } from "../../components/custom-button/custom-button";
 import { openFilterDrawer } from "../../redux/actions/filterActions";
 import { SORTING_VALUES } from "../../constants/sorting_values";
-import { getFavorites, toggleFavorites } from '../../redux/utils/localStorage';
+import { getFavorites, getUsersFromLocalStorage, setUsersToLocalStorage, toggleFavorites } from '../../redux/utils/localStorage';
 import './search.css';
 import { useNavigate } from 'react-router-dom';
 import { getCorrectNavigate } from '../../utils/helpers/getCorrectNavigate';
@@ -21,13 +21,22 @@ export const Search = () => {
     const { filters } = useSelector((state) => state.filters);
     const { keyword } = useSelector((state) => state.keyword);
     const { movies, loading, error, totalItems } = useSelector((state) => state.movies);
+    const { isAuthenticated, username } = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
+        if (isAuthenticated) {
+            const usersData = getUsersFromLocalStorage();
+            const currentUserData = usersData[username];
+            currentUserData.history = currentUserData.history || [];
+            currentUserData.history.push({ currentPageNum, dropdownValue, filters, keyword });
+            usersData[username] = currentUserData;
+            setUsersToLocalStorage(usersData);
+        }
         dispatch(fetchMovies(currentPageNum, dropdownValue, filters, keyword));
         navigate(getCorrectNavigate(currentPageNum, dropdownValue, filters, keyword));
-    }, [dispatch, navigate, currentPageNum, dropdownValue, filters, keyword]);
+    }, [dispatch, navigate, currentPageNum, dropdownValue, filters, keyword, isAuthenticated, username]);
 
     const [favorites, setFavorites] = useState(getFavorites())
 
