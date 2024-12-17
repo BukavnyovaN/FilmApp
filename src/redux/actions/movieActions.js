@@ -19,7 +19,7 @@ const requestError = (error) => ({
     payload: error.message
 })
 
-export const fetchMovies = (page, order, filters) => {
+export const fetchMovies = (page, order, filters, keyword) => {
     return async (dispatch) => {
         dispatch(startLoading());
         try {
@@ -35,16 +35,15 @@ export const fetchMovies = (page, order, filters) => {
                         genres: genre ? genre : undefined,
                         yearFrom,
                         yearTo,
+                        keyword: keyword ? keyword : undefined
                     },
                     headers: {
                         'X-API-KEY': API_KEY,
                     },
                 });
-
             dispatch(fetchMoviesSuccess(response.data, page));
         } catch (error) {
             dispatch(requestError(error));
         }
     };
 };
-

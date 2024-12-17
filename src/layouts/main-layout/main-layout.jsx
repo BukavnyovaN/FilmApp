@@ -1,4 +1,4 @@
-import { Layout, Button, Image} from "antd";
+import { Layout, Button, Image } from "antd";
 import { Content, Header } from "antd/lib/layout/layout";
 import { Link, Outlet } from "react-router-dom";
 import { PATHS } from "../../constants/paths";
@@ -7,13 +7,12 @@ import { logoutUser } from '../../redux/actions/authActions';
 import React from 'react';
 import logo from "../../assets/images/logo.png";
 
-
 export function MainLayout() {
     const dispatch = useDispatch();
     const { isAuthenticated, username } = useSelector(state => state.auth);
 
     return (
-        <Layout style={{minHeight: '100vh'}}>
+        <Layout style={{ minHeight: '100vh' }}>
             <Layout>
                 <Header style={{
                     width: '100%',
@@ -22,7 +21,7 @@ export function MainLayout() {
                     justifyContent: 'space-evenly',
                     color: 'white',
                 }}>
-                    <Link to={PATHS.ROOT} style={{display: 'flex', alignItems: 'center', gap: '10px', lineHeight: "normal"}}>
+                    <Link to={PATHS.ROOT} style={{ display: 'flex', alignItems: 'center', gap: '10px', lineHeight: "normal" }}>
                         <Image
                             width={30}
                             src={logo}
@@ -45,8 +44,8 @@ export function MainLayout() {
                     )}
 
                 </Header>
-                <Content style={{margin: 45}}>
-                    <Outlet/>
+                <Content style={{ margin: 45 }}>
+                    <Outlet />
                 </Content>
             </Layout>
         </Layout>
